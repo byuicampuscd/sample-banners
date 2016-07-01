@@ -1,0 +1,22 @@
+{{#each colleges}}
+<li id="collegeList{{@index}}">
+   {{name}}
+</li>
+{{/each}}
+|||||||||||||||||||||||||||||||||||||||||||||||
+{{#each colleges}}
+<div id="college{{@index}}">
+   <div class="righter">
+      <h2>Close</h2>
+   </div>
+   <div class="tabby">
+      <h2>{{name}}</h2>
+   </div>
+   {{#each departments}}
+   <h3>{{name}}</h3>
+      {{#each files}}
+      <img data-src="{{url}}" class="lazyload" alt="{{name}}" /> 
+      {{/each}} 
+   {{/each}}
+</div>
+{{/each}}

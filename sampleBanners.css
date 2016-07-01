@@ -1,0 +1,46 @@
+/********************************************
+    Banners
+********************************************/
+
+#collegeList li {
+   cursor: pointer;
+}
+
+.righter {
+   float: right;
+   margin-right: -20px;
+   background-color: #69819e;
+   width: 90px;
+   padding: 2px;
+   padding-right: 20px;
+   padding-left: 20px;
+   border-Radius: 25px 0px 0px 25px;
+}
+
+.righter h2 {
+   color: white;
+}
+
+#fileList>div {
+   display: none;
+}
+
+#fileList img {
+   width: 32%;
+}
+
+#preview {
+   margin: 35px 0;
+   display: none;
+}
+
+#preview img {
+   width: 700px;
+   display: block;
+   margin: auto;
+}
+
+#fileList h3 {
+   font-size: 30px;
+   margin-left: 0px;
+}

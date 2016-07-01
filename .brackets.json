@@ -1,0 +1,10 @@
+{
+   "path": {
+      "**.handlebars": {
+         "bb.beautify.onSave": false
+      },
+      "**.txt": {
+         "bb.beautify.onSave": false
+      }
+   }
+}
