@@ -29,6 +29,11 @@
    width: 32%;
 }
 
+#fileList a {
+   display: block;
+   margin-left: 15px;
+}
+
 #preview {
    margin: 35px 0;
    display: none;

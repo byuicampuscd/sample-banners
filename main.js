@@ -1,15 +1,38 @@
 /*jslint plusplus: true, browser: true, devel: true */
 /*global Papa, longCSVDataToShort, Handlebars, $, addInteraction*/
 
-//This is to set up handlebars below
+/******************************************************************/
+/************************** HANDLEBARS ****************************/
+/******************************************************************/
 var collegeListTemplate,
    fileListTemplate;
+
+/*Handlebars.registerHelper('file', function (file, options) {
+   "use strict";
+   var urlPieces = file.url.split("."),
+      fileExtention = urlPieces[urlPieces.length - 1].toLowerCase(),
+      picFiles = ['jpg', 'jpeg', 'png', 'gif'],
+      isPic = picFiles.some(function (pic) {
+         return pic === fileExtention;
+      }),
+      textOut;
+
+   if (isPic) {
+      textOut = '<div class="mybold">' + options.fn(this) + '</div>';
+   } else {
+      textOut = '';
+
+   }
+
+   return new Handlebars.SafeString(textOut);
+});*/
+
 
 /******************************************************************/
 /****************** LONG CSV DATA TO SHORT ************************/
 /******************************************************************/
 
-var longCSVDataToShort = function (rawData) {
+function longCSVDataToShort(rawData) {
    "use strict";
 
    function sortByName(a, b) {
@@ -21,6 +44,17 @@ var longCSVDataToShort = function (rawData) {
          return 1;
       }
       return 0;
+   }
+
+   function isFileAPic(url) {
+      var urlPieces = url.split("."),
+         fileExtention = urlPieces[urlPieces.length - 1].toLowerCase(),
+         picFiles = ['jpg', 'jpeg', 'png', 'gif'];
+
+      //check if its on the list at least once
+      return picFiles.some(function (pic) {
+         return pic === fileExtention;
+      });
    }
 
    var colleges = {},
@@ -71,7 +105,8 @@ var longCSVDataToShort = function (rawData) {
       //put it in
       arrayOut[collIndex].departments[deptIndex].files.push({
          name: file.name,
-         url: file.url
+         url: file.url,
+         isPic: isFileAPic(file.url)
       });
 
       return arrayOut;
@@ -99,7 +134,7 @@ var longCSVDataToShort = function (rawData) {
 });*/
 
    return changed;
-};
+}
 
 /******************************************************************/
 /*********************** INTERACTION LOGIC ************************/
@@ -210,7 +245,7 @@ $(function () {
       collegeListTemplate = Handlebars.compile(templateString[0]);
       fileListTemplate = Handlebars.compile(templateString[1]);
 
-      $.get("info.csv", function (csvText) {
+      $.get("fileData.csv", function (csvText) {
          //have to run our own ajax because Papa does not trim the last line
          var csv = Papa.parse(csvText.trim(), {
             header: true

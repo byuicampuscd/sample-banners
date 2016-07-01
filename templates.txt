@@ -15,7 +15,11 @@
    {{#each departments}}
    <h3>{{name}}</h3>
       {{#each files}}
-      <img data-src="{{url}}" class="lazyload" alt="{{name}}" /> 
+         {{#if isPic}}
+            <img data-src="{{url}}" class="lazyload" alt="{{name}}" /> 
+         {{else}}
+            <a href="{{url}}" target="_blank">{{name}}</a>
+         {{/if}}
       {{/each}} 
    {{/each}}
 </div>
