@@ -1,0 +1,11 @@
+{
+  "name": "sample-banners",
+  "version": "1.0.0",
+  "description": "This is used in the Sample Banners samples page so that the banners can just be a big CSV that is updated.",
+  "main": "",
+  "scripts": {
+    "test": "NA"
+  },
+  "author": "Joshua McKinney",
+  "license": "MIT"
+}
